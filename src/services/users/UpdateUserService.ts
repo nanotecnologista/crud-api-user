@@ -12,7 +12,7 @@ export class UpdateUserService{
         if (!user){
             return {
                 status: 404,
-                message: "User dnot found!"
+                message: "User not found!"
             }
         }
 
