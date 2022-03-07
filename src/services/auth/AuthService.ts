@@ -50,7 +50,7 @@ export class CreateAuthService {
             return{
                 status:200,
                 message: "Logged",
-                data: token
+                token: token
             }
 
         } catch{
