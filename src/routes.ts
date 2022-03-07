@@ -15,8 +15,11 @@ import { GetAllUsersTypesController } from "./controllers/users_types/GetAllUser
 import { DeleteUserTypeController } from "./controllers/users_types/DeleteUserTypeController"; 
 import { UpdateUserTypeController } from "./controllers/users_types/UpdateUserTypeController"; 
 
+//ValidateMail
+import { ActivateMailController } from "./controllers/email_validate/ValidateMailController";
+
 //Auth
-import { ActivateController, AuthController } from "./controllers/auth/AuthController";
+import { AuthController } from "./controllers/auth/AuthController";
 
 const routes = Router()
 
@@ -29,7 +32,7 @@ const routes = Router()
 
 //Auth
 routes.post("/auth", EmailValidated, new AuthController().handle)
-routes.get("/validate-mail/:email_token", new ActivateController().handle)
+routes.get("/validate-mail/:email_token", new ActivateMailController().handle)
 
 //User
 routes.post("/user", new CreateUserController().handle)
