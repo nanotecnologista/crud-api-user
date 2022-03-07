@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import AuthMiddleware from "./middlewares/AuthMiddleware";
-import ValidateMiddleware from "./middlewares/EmailValidateMiddleware"
+import EmailValidated from "./middlewares/EmailValidateMiddleware"
 
 //User 
 import { CreateUserController } from "./controllers/users/CreateUserController"
@@ -28,12 +28,12 @@ const routes = Router()
 */
 
 //Auth
-routes.post("/auth", ValidateMiddleware.check, new AuthController().handle)
-routes.post("/validate-mail/:email_token", new ActivateController().handle)
+routes.post("/auth", EmailValidated, new AuthController().handle)
+routes.get("/validate-mail/:email_token", new ActivateController().handle)
 
 //User
 routes.post("/user", new CreateUserController().handle)
-routes.get("/users", AuthMiddleware ,new GetAllUsersController().handle)
+routes.get("/users", EmailValidated, AuthMiddleware ,new GetAllUsersController().handle)
 routes.delete("/user/:id", new DeleteUserController().handle)
 routes.put("/user/:id", new UpdateUSerController().handle)
 
