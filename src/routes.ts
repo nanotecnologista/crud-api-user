@@ -8,6 +8,7 @@ import { CreateUserController } from "./controllers/users/CreateUserController"
 import { GetAllUsersController } from "./controllers/users/GetAllUsersController";
 import { DeleteUserController } from "./controllers/users/DeleteUserController";
 import { UpdateUSerController} from "./controllers/users/UpdateUserController"
+import { GetUserController } from "./controllers/users/GetUserController";
 
 //User Type
 import { CreateUserTypeController } from "./controllers/users_types/CreateUserTypeController"; 
@@ -36,8 +37,9 @@ routes.get("/validate-mail/:email_token", new ActivateMailController().handle)
 
 //User
 routes.post("/user", new CreateUserController().handle)
-routes.get("/users", EmailValidated, AuthMiddleware ,new GetAllUsersController().handle)
 routes.delete("/user/:id", new DeleteUserController().handle)
+routes.get("/users", EmailValidated, AuthMiddleware ,new GetAllUsersController().handle)
+routes.get("/user", AuthMiddleware ,new GetUserController().handle)
 routes.put("/user/:id", new UpdateUSerController().handle)
 
 //User Type

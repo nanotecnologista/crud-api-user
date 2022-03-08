@@ -1,5 +1,5 @@
 import { User } from '../../entities/User';
-import {IsEmail,IsNotEmpty, Min, Max, Length, IsOptional} from "class-validator"
+import {IsEmail,IsNotEmpty, Length, IsOptional} from "class-validator"
 
 export class UserRequest {
     @IsNotEmpty()
